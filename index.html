@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exotic Nails & Hampers | Premium Boutique</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PREMIUM PALETTE --- */
+        :root {
+            --bg-main: #FFFFFF;
+            --bg-soft: #FAF7F9;
+            --accent-pink: #F4A5C7;
+            --accent-lavender: #D3C4E3;
+            --accent-gold: #D4AF37; /* Added gold for hampers */
+            --text-dark: #2A2426;
+            --text-muted: #8E8488;
+            --gradient-primary: linear-gradient(135deg, #F4A5C7 0%, #D3C4E3 100%);
+            --gradient-gold: linear-gradient(135deg, #F9F29F 0%, #E0AA3E 100%);
+            --shadow-glass: 0 10px 40px rgba(244, 165, 199, 0.15);
+            --shadow-card: 0 4px 20px rgba(0,0,0,0.03);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        h1, h2, h3, h4, .serif-font { 
+            font-family: 'Playfair Display', serif; 
+            letter-spacing: -0.5px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        li { list-style: none; }
+
+        /* --- ANNOUNCEMENT BAR --- */
+        .top-bar {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- GLASS HEADER --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px); position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); }
+        .logo span { color: var(--accent-pink); }
+
+        .nav-links { display: none; gap: 40px; font-size: 0.9rem; font-weight: 500; }
+        .nav-links a { position: relative; padding-bottom: 5px; transition: var(--transition);}
+        .nav-links a:hover { color: var(--accent-pink); }
+
+        .cart-icon-wrapper { 
+            position: relative; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 500;
+            background: var(--bg-soft); padding: 8px 16px; border-radius: 50px; transition: var(--transition);
+        }
+        .cart-icon-wrapper:hover { background: var(--gradient-primary); color: white; }
+        .cart-badge {
+            background: var(--text-dark); color: white;
+            font-size: 0.75rem; width: 22px; height: 22px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-weight: 600;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 14px 35px; font-size: 0.95rem; font-weight: 500;
+            border-radius: 50px; cursor: pointer; border: none; transition: var(--transition);
+        }
+        .btn-primary { background: var(--text-dark); color: white; }
+        .btn-primary:hover { background: #1a1517; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .btn-outline { border: 2px solid var(--text-dark); color: var(--text-dark); background: transparent; }
+        .btn-outline:hover { background: var(--text-dark); color: white; transform: translateY(-3px); }
+
+        /* --- DYNAMIC HERO SECTION --- */
+        .hero {
+            position: relative; padding: 80px 5%; min-height: 85vh;
+            display: flex; align-items: center;
+            background: var(--bg-main); overflow: hidden;
+        }
+
+        .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.3; z-index: 0; animation: floatBlob 15s infinite alternate; }
+        .blob-1 { top: -10%; right: -5%; width: 500px; height: 500px; background: var(--accent-pink); }
+        .blob-2 { bottom: -10%; left: -5%; width: 400px; height: 400px; background: var(--accent-gold); animation-delay: -5s; }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 30px) scale(1.1); }
+            100% { transform: translate(30px, -30px) scale(0.9); }
+        }
+
+        .hero-container {
+            position: relative; z-index: 1; max-width: 1300px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr; gap: 50px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 25px; color: var(--text-dark); }
+        .hero-text p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 40px; max-width: 500px; line-height: 1.6; }
+        .hero-buttons { display: flex; gap: 20px; flex-wrap: wrap; }
+
+        .hero-visual { position: relative; display: flex; justify-content: center; gap: 20px;}
+        .hero-img-box {
+            position: relative; width: 220px; border-radius: 120px 120px 20px 20px; 
+            overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.08); z-index: 2;
+        }
+        .hero-img-box img { width: 100%; height: 350px; object-fit: cover; }
+        .img-down { transform: translateY(40px); }
+
+        /* --- INSTAGRAM STORY CATEGORIES --- */
+        .categories-section { padding: 60px 5% 40px; background: var(--bg-main); text-align: center; }
+        .story-wrapper {
+            display: flex; justify-content: center; gap: 35px; overflow-x: auto; padding: 20px 0; scrollbar-width: none;
+        }
+        .story-wrapper::-webkit-scrollbar { display: none; }
+        
+        .story-item { display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; }
+        .story-ring {
+            width: 100px; height: 100px; border-radius: 50%;
+            background: var(--gradient-primary); padding: 3px;
+            position: relative; overflow: hidden; transition: var(--transition);
+        }
+        .story-ring.gold { background: var(--gradient-gold); }
+        
+        .story-ring::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, #fff);
+            animation: spinRing 2s linear infinite; opacity: 0; transition: opacity 0.3s;
+        }
+        .story-item:hover .story-ring::before { opacity: 1; }
+        @keyframes spinRing { 100% { transform: rotate(360deg); } }
+        
+        .story-img {
+            width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+            border: 4px solid white; position: relative; z-index: 2;
+        }
+        .story-item span { font-weight: 500; font-size: 0.95rem; }
+
+        /* --- SHOP SECTIONS (NAILS & HAMPERS) --- */
+        .shop-section { padding: 80px 5%; background: var(--bg-soft); }
+        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
+        .section-title { font-size: 3rem; }
+        .view-all { font-weight: 500; font-size: 0.9rem; color: var(--text-dark); border-bottom: 1px solid var(--text-dark); padding-bottom: 2px;}
+
+        .product-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px;
+        }
+        .product-card {
+            background: white; border-radius: 24px; padding: 18px;
+            box-shadow: var(--shadow-card); transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+        .product-card:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.06); transform: translateY(-8px); }
+        
+        .img-container { 
+            position: relative; overflow: hidden; border-radius: 16px; 
+            margin-bottom: 20px; aspect-ratio: 4/5; background: #f9f9f9;
+        }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .product-card:hover .img-container img { transform: scale(1.06); }
+
+        .tag {
+            position: absolute; top: 15px; left: 15px;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(5px);
+            padding: 6px 14px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+            color: var(--text-dark); box-shadow: 0 4px 15px rgba(0,0,0,0.08); z-index: 2;
+        }
+
+        .quick-add-btn {
+            position: absolute; bottom: 15px; left: 15px; right: 15px;
+            background: rgba(255,255,255,0.95); color: var(--text-dark); border: none;
+            padding: 14px; border-radius: 12px; font-weight: 600; font-size: 0.9rem;
+            cursor: pointer; transition: all 0.3s ease; 
+            opacity: 0; transform: translateY(20px); backdrop-filter: blur(5px);
+        }
+        .product-card:hover .quick-add-btn { opacity: 1; transform: translateY(0); }
+        .quick-add-btn:hover { background: var(--text-dark); color: white; }
+
+        .product-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 6px; }
+        .product-price { font-size: 1.1rem; color: var(--text-muted); font-weight: 500; }
+
+        /* --- THE HAMPERS SECTION --- */
+        .hampers-section { padding: 80px 5%; background: var(--bg-main); }
+        
+        /* --- DUAL CUSTOM STUDIO BANNER --- */
+        .custom-banner {
+            margin: 0 5% 100px; padding: 70px 6%;
+            background: var(--text-dark); border-radius: 40px;
+            display: flex; align-items: center; justify-content: space-between;
+            color: white; flex-wrap: wrap; gap: 40px; position: relative; overflow: hidden;
+        }
+        .custom-banner::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(244,165,199,0.2) 0%, transparent 60%);
+            z-index: 0;
+        }
+        .banner-text { position: relative; z-index: 1; }
+        .banner-text h2 { font-size: 3.5rem; margin-bottom: 15px; color: white; line-height: 1.1;}
+        .banner-text p { font-size: 1.15rem; opacity: 0.95; max-width: 550px; margin-bottom: 0; line-height: 1.6;}
+        
+        .btn-banner { 
+            position: relative; z-index: 1; background: var(--gradient-primary); color: white; 
+            font-size: 1.05rem; padding: 18px 40px; border-radius: 50px; border: none; font-weight: 600; cursor: pointer; transition: var(--transition);
+        }
+        .btn-banner:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 40px rgba(244, 165, 199, 0.4);}
+
+        /* --- CART DRAWER --- */
+        .cart-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3); backdrop-filter: blur(5px);
+            z-index: 1000; opacity: 0; visibility: hidden; transition: var(--transition);
+        }
+        .cart-drawer {
+            position: fixed; top: 0; right: -480px; width: 100%; max-width: 450px; height: 100%;
+            background: var(--bg-main); z-index: 1001; padding: 35px; transition: var(--transition);
+            display: flex; flex-direction: column; box-shadow: -15px 0 40px rgba(0,0,0,0.08);
+        }
+        .cart-active .cart-overlay { opacity: 1; visibility: visible; }
+        .cart-active .cart-drawer { right: 0; }
+        
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f0; padding-bottom: 20px; margin-bottom: 20px;}
+        .close-cart { cursor: pointer; font-size: 1.5rem; color: var(--text-muted); transition: transform 0.3s;}
+        .close-cart:hover { transform: rotate(90deg); color: var(--text-dark);}
+        .cart-items { flex-grow: 1; overflow-y: auto; padding-right: 10px;}
+        .cart-footer { border-top: 1px solid #f0f0f0; padding-top: 25px; }
+        .cart-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.3rem; margin-bottom: 20px; }
+
+        /* --- PREMIUM FOOTER --- */
+        footer { background: var(--bg-soft); padding: 80px 5% 30px; border-top: 1px solid rgba(0,0,0,0.03); }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 50px; max-width: 1300px; margin: 0 auto; }
+        .footer-col h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 25px; color: var(--text-dark); letter-spacing: 0.5px; }
+        .footer-col li { margin-bottom: 15px; color: var(--text-muted); font-size: 0.95rem; transition: var(--transition);}
+        .footer-col li:hover { color: var(--accent-pink); transform: translateX(5px);}
+        
+        .footer-bottom { text-align: center; margin-top: 80px; padding-top: 25px; border-top: 1px solid rgba(0,0,0,0.05); color: var(--text-muted); font-size: 0.9rem; }
+
+        /* --- RESPONSIVE FIXES --- */
+        @media (min-width: 992px) {
+            .nav-links { display: flex; }
+            .hero-container { grid-template-columns: 1.1fr 1fr; }
+            .hero-text h1 { font-size: 4.8rem; }
+            .custom-banner { flex-wrap: nowrap; padding: 70px 80px;}
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
+        }
+        @media (max-width: 768px) {
+            .section-title { font-size: 2.2rem; }
+            .hero-img-box { width: 160px; }
+            .img-down { transform: translateY(20px); }
+            .custom-banner { padding: 40px 30px; border-radius: 30px;}
+            .banner-text h2 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        ✨ The Festive Gifting & Bridal Nail Edit is Now Live ✨
+    </div>
+
+    <header>
+        <div class="nav-links">
+            <a href="#nails">The Nail Studio</a>
+            <a href="#hampers">Gift Hampers</a>
+            <a href="#custom">Bespoke Orders</a>
+        </div>
+        
+        <a href="#" class="logo serif-font">Exotic<span>.</span></a>
+        
+        <div class="header-actions">
+            <div class="cart-icon-wrapper" onclick="toggleCart()">
+                🛒 Bag
+                <div class="cart-badge" id="cart-badge">0</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer">
+        <div class="cart-header">
+            <h2 class="serif-font" style="font-size: 2rem;">Your Bag</h2>
+            <span class="close-cart" onclick="toggleCart()">✕</span>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <div style="text-align: center; margin-top: 60px;">
+                <p style="color: var(--text-muted); font-size: 1.1rem;">Your bag is currently empty.</p>
+                <button class="btn btn-primary" style="margin-top: 25px;" onclick="toggleCart()">Continue Shopping</button>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Subtotal</span>
+                <span id="cart-total-price">₹0</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; text-align: center;">Taxes and shipping calculated at checkout</p>
+            <button class="btn btn-primary" style="width: 100%;">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1 class="serif-font">Curated Luxury,<br><span class="text-gradient">For You & Yours.</span></h1>
+                <p>Discover our dual boutique. Flawless handcrafted press-on nails for you, and exquisitely curated bespoke gift hampers for the ones you love.</p>
+                <div class="hero-buttons">
+                    <a href="#nails" class="btn btn-primary">Shop Nails</a>
+                    <a href="#hampers" class="btn btn-outline">Shop Hampers</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-img-box">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=600" alt="Exotic Nails">
+                </div>
+                <div class="hero-img-box img-down">
+                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=600" alt="Luxury Gift Hamper">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories-section">
+        <h3 class="serif-font" style="font-size: 2.2rem; margin-bottom: 35px;">Shop By Category</h3>
+        <div class="story-wrapper">
+            <div class="story-item" onclick="window.location.href='#nails'">
+                <div class="story-ring"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=300" class="story-img"></div>
+                <span>Bridal Nails</span>
+            </div>
+            <div class="story-item" onclick="window.location.href='#nails'">
+                <div class="story-ring"><img src="https://greenweddingshoes.com/wp-content/uploads/2024/07/long-almond-natural-nails-with-silver-glitter-arch-designs-thumb.jpg?auto=format&fit=crop&q=80&w=300" class="story-img"></div>
+                <span>Everyday Nails</span>
+            </div>
+            <div class="story-item" onclick="window.location.href='#hampers'">
+                <div class="story-ring gold"><img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&q=80&w=300" class="story-img"></div>
+                <span>Birthday Boxes</span>
+            </div>
+            <div class="story-item" onclick="window.location.href='#hampers'">
+                <div class="story-ring gold"><img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&q=80&w=300" class="story-img"></div>
+                <span>Bridesmaid Hampers</span>
+            </div>
+            <div class="story-item" onclick="window.location.href='#custom'">
+                <div class="story-ring"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJfKauFHzNCreXgTSFaGXYoguvFMGwtK8oaw&s?auto=format&fit=crop&q=80&w=300" class="story-img"></div>
+                <span>Custom Orders</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="nails" class="shop-section">
+        <div class="section-header">
+            <h2 class="serif-font section-title">The Nail <span class="text-gradient">Studio</span></h2>
+            <a href="#" class="view-all">View All Nails</a>
+        </div>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="tag">Bestseller</div>
+                <div class="img-container">
+                    <img src="https://www.dippycownails.com/cdn/shop/products/DIPPY-COW-NAILS-3164.jpg?auto=format&fit=crop&q=80&w=600" alt="Rose Quartz">
+                    <button class="quick-add-btn" onclick="addToCart('Rose Quartz Marble Nails', 549, 'https://images.unsplash.com/photo-1599839619722-39751411ea63?auto=format&fit=crop&q=80&w=300')">+ Quick Add to Bag</button>
+                </div>
+                <h3 class="product-title">Rose Quartz Marble</h3>
+                <p class="product-price">₹549</p>
+            </div>
+            
+            <div class="product-card">
+                <div class="tag">Bridal Edit</div>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600" alt="Pearl White">
+                    <button class="quick-add-btn" onclick="addToCart('Classic Pearl Ombre Nails', 899, 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=300')">+ Quick Add to Bag</button>
+                </div>
+                <h3 class="product-title">Classic Pearl Ombre</h3>
+                <p class="product-price">₹899</p>
+            </div>
+            
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="https://www.shutterstock.com/image-photo/modern-woman-beautiful-brown-acrylic-600nw-2584234085.jpg?auto=format&fit=crop&q=80&w=600" alt="Glazed Chrome">
+                    <button class="quick-add-btn" onclick="addToCart('Glazed Chrome Stiletto', 699, 'https://images.unsplash.com/photo-1516975080661-46b081033ce3?auto=format&fit=crop&q=80&w=300')">+ Quick Add to Bag</button>
+                </div>
+                <h3 class="product-title">Glazed Chrome Stiletto</h3>
+                <p class="product-price">₹699</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="hampers" class="hampers-section shop-section" style="background: var(--bg-main);">
+        <div class="section-header">
+            <h2 class="serif-font section-title">Curated <span style="color: var(--accent-gold);">Hampers</span></h2>
+            <a href="#" class="view-all">View All Hampers</a>
+        </div>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="tag" style="color: var(--accent-gold);">Top Pick</div>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=600" alt="Self Care Hamper">
+                    <button class="quick-add-btn" onclick="addToCart('The Spa & Self-Care Box', 1499, 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=300')">+ Quick Add to Bag</button>
+                </div>
+                <h3 class="product-title">The Spa & Self-Care Box</h3>
+                <p class="product-price">₹1,499</p>
+            </div>
+            
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&q=80&w=600" alt="Birthday Hamper">
+                    <button class="quick-add-btn" onclick="addToCart('The Birthday Glow Up', 1899, 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&q=80&w=300')">+ Quick Add to Bag</button>
+                </div>
+                <h3 class="product-title">The Birthday Glow Up</h3>
+                <p class="product-price">₹1,899</p>
+            </div>
+            
+            <div class="product-card">
+                <div class="tag" style="color: var(--accent-gold);">Wedding Edit</div>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&q=80&w=600" alt="Bridesmaid Hamper">
+                    <button class="quick-add-btn" onclick="addToCart('Bridesmaid Proposal Box', 2499, 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&q=80&w=300')">+ Quick Add to Bag</button>
+                </div>
+                <h3 class="product-title">Bridesmaid Proposal Box</h3>
+                <p class="product-price">₹2,499</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="custom">
+        <div class="custom-banner">
+            <div class="banner-text">
+                <h2 class="serif-font">The Bespoke Studio</h2>
+                <p>Want a specific nail design or a fully customized gift hamper with handwritten notes? Drop us a message and we will curate magic just for you.</p>
+            </div>
+            <div>
+                <a href="https://wa.me/919876543210?text=Hi%20Exotic%20Team!%20%E2%9C%A8%20I%20want%20to%20discuss%20a%20custom%20order%20(Nails/Hamper)." target="_blank" class="btn-banner">
+                    💬 WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3 class="serif-font" style="font-size: 2.2rem; margin-bottom: 20px; color: var(--text-dark);">Exotic<span style="color: var(--accent-pink);">.</span></h3>
+                <p style="color: var(--text-muted); line-height: 1.7; max-width: 300px;">Curating luxury press-on nails and exquisite gift hampers. Delivered PAN India with love.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#nails">The Nail Studio</a></li>
+                    <li><a href="#hampers">Gift Hampers</a></li>
+                    <li><a href="#custom">Corporate Gifting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Sizing Guide (Nails)</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Let's Connect</h4>
+                <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.95rem;">Join our community for exclusive drops & gifting ideas.</p>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <a href="#" class="btn btn-primary" style="padding: 10px 25px; font-size: 0.85rem;">Instagram</a>
+                    <a href="#" class="btn btn-outline" style="padding: 10px 25px; font-size: 0.85rem;">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Exotic Nails & Hampers. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Cart Logic handles both Nails and Hampers
+        let cartCount = 0;
+        let cartTotal = 0;
+        
+        function toggleCart() {
+            document.body.classList.toggle('cart-active');
+            document.body.style.overflow = document.body.classList.contains('cart-active') ? 'hidden' : 'auto';
+        }
+
+        function addToCart(name, price, imgUrl) {
+            cartCount++;
+            cartTotal += price;
+            
+            document.getElementById('cart-badge').innerText = cartCount;
+            document.getElementById('cart-total-price').innerText = '₹' + cartTotal;
+            
+            const cartContainer = document.getElementById('cart-items-container');
+            if(cartCount === 1) cartContainer.innerHTML = '';
+            
+            const itemHTML = `
+                <div style="display: flex; gap: 18px; margin-bottom: 20px; align-items: center; background: white; padding: 12px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.02);">
+                    <img src="${imgUrl}" style="width: 75px; height: 75px; object-fit: cover; border-radius: 10px;">
+                    <div style="flex-grow: 1;">
+                        <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 5px; color: var(--text-dark);">${name}</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">₹${price}</p>
+                    </div>
+                </div>
+            `;
+            
+            cartContainer.insertAdjacentHTML('beforeend', itemHTML);
+            toggleCart(); 
+        }
+    </script>
+</body>
+</html>
